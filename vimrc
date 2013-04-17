@@ -2,13 +2,18 @@
 runtime bundle/vim-pathogen/autoload/pathogen.vim
 execute pathogen#infect()
 
+" Remap leader to be [
+let mapleader = "["
+let maplocalleader = "["
+
 " Syntax highlighting
 syntax on
 
-" Solarized color scheme (managed by pathogen)
-set background=dark
 " Need t_Co for powerline
 set t_Co=16
+
+" Solarized color scheme (managed by pathogen)
+set background=dark
 let g:solarized_termtrans=1
 colorscheme solarized
 
@@ -54,6 +59,9 @@ endif
 " Show line numbers
 set number
 
+" Add perl syntax highlighting for psgi ext
+au BufNewFile,BufRead *.psgi set filetype=perl
+
 " Remap ESC to Enter key in insert mode. Press ctlr+enter to insert enter
 inoremap <CR> <Esc>
 
@@ -64,7 +72,7 @@ map <F2> :NERDTreeToggle<CR>
 map <leader>c <c-_><c-_>
 
 " Powerline. Pretty status line with cool symbols
-set rtp+=/home/doni/.vim/bundle/powerline/powerline/bindings/vim
+set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
 set laststatus=2
 
 " Display a vertical line on the 79 column mark to encourage short lines of text
